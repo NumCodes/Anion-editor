@@ -1,0 +1,121 @@
+body.dark {
+  --primary: #800000;
+  --on-primary: #FFFFFF;
+  --primary-container: #8B0000;
+  --on-primary-container: #FFFFFF;
+  --secondary: #8B4513;
+  --on-secondary: #FFFFFF;
+  --secondary-container: #A0522D;
+  --on-secondary-container: #FFFFFF;
+  --tertiary: #4B0082;
+  --on-tertiary: #FFFFFF;
+  --tertiary-container: #483D8B;
+  --on-tertiary-container: #FFFFFF;
+  --error: #B22222;
+  --on-error: #FFFFFF;
+  --error-container: #8B0000;
+  --on-error-container: #FFFFFF;
+  --background: #000000;
+  --body: #000000;
+  --on-background: #FFFFFF;
+  --surface: #000000;
+  --on-surface: #FFFFFF;
+  --surface-variant: #1A1A1A;
+  --on-surface-variant: #FFFFFF;
+  --inverse-surface: #F0F8FF;
+  --inverse-primary: #8B0000;
+  --inverse-on-primary: #FFFF00;
+  --code-text-color: #FFFFFF;
+  --code-added-color: #008000;
+  --code-removed-color: #FF0000;
+  --added-line-color: #00800033;
+  --removed-line-color: #FF000033;
+  --font-family: "Times New Roman", serif;
+}
+
+body.dark {
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+}
+
+a {
+  color: #8B0000;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #800000 !important;
+}
+
+code {
+  font-family: "Times New Roman", serif !important;
+}
+
+.added {
+  color: #008000 !important;
+  background-color: #00800033 !important;
+}
+
+.removed {
+  color: #FF0000 !important;
+  background-color: #FF000033 !important;
+}
+
+.cm-tooltip {
+  background-color: #8B0000 !important;
+}
+
+.dark .ͼ2 .cm-gutters {
+  background-color: #1A1A1A !important;
+}
+
+.ͼ2 .cm-activeLine,
+.ͼ2 .cm-activeLineGutter {
+  border-left-color: #8B0000 !important;
+}
+
+.dark code .ͼi {
+  color: #81c491 !important;
+}
+
+.dark code .ͼi {
+  color: #98c379 !important;
+}
+
+.dark code .ͼb {
+  color: #c678dd !important;
+}
+
+.cm-number,
+div[data-language="css"] .ͼb {
+  color: #d19a66 !important;
+}
+
+.dark code .ͼe {
+  color: #e06c75 !important;
+}
+
+.dark code .ͼg,
+.dark code .ͼj {
+  color: #61afef !important;
+}
+
+.cm-error {
+  color: #e06c75 !important;
+}
+
+.cm-qualifier {
+  color: #abb2bf !important;
+}
+
+.cm-bracket {
+  color: #abb2bf !important;
+}
+
+.dark code .ͼc,
+.dark code .ͼi {
+  color: #6ce09c !important;
+}
+
+.dark code .ͼd {
+  color: #e06c75 !important;
+}

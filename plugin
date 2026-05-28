@@ -1,0 +1,14 @@
+Retro
+Experience the beauty of a retro style with this captivating theme.
+Gothic
+Experience the beauty of a gothic style with this captivating theme.
+Dark Blue
+Experience the beauty of a dark blue style with this captivating theme.
+Pastel
+Experience the beauty of a pastel style with this captivating theme.
+Alucard
+Experience the beauty of a dark and mysterious style
+Catppuccino
+Experience the beauty of a warm and cozy style with this captivating theme.
+// Replace 1 with the actual ID and 'New Name' with your desired name
+await pluginDB.updatePlugin(1, { name: 'New Name' });

@@ -1,0 +1,8 @@
+{
+  "name": "Aura Theme",
+  "description": "Experience the beauty of a dark and mysterious style.",
+  "version": "1.0.0",
+  "type": "theme", 
+  "file": "themes/alucard.css",
+  "author": "Num codes"
+}

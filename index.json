@@ -1,0 +1,8 @@
+{
+  "name": "Aura Theme",
+  "description": "Experience the beauty of a retro style with this captivating theme.",
+  "version": "4.0.0",
+  "type": "theme", 
+  "file": "themes/retro.css",
+  "author": "Num codes"
+}

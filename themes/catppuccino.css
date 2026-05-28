@@ -1,0 +1,210 @@
+:root {
+    --primary: #8bd5ca; /* teal */
+    --on-primary: #000000;
+    --primary-container: #a6da95; /* green */
+    --on-primary-container: #8b4513;
+    --secondary: #f5bde6; /* pink */
+    --on-secondary: #000000;
+    --secondary-container: #f0c6c6; /* flamingo */
+    --on-secondary-container: #a0522d;
+    --tertiary: #eed49f; /* yellow */
+    --o5n-tertiary: #000000;
+    --tertiary-container: #f5a97f; /* peach */
+    --on-tertiary-container: #cd5c5c;
+    --selection: #c9cbd3;
+    --error: #ed8796; /* red */
+    --on-error: #ffffff;
+    --error-container: #f5a97f; /* peach */
+    --on-error-container: #b22222;
+    --background: #f0f8ff; /* surface */
+    --body: #f0f8ff; /* surface */
+    --on-background: #00008b;
+    --surface: #f0f8ff; /* surface */
+    --on-surface: #00008b;
+    --surface-variant: #e6e6fa; /* surface variant */
+    --on-surface-variant: #483d8b;
+    --inverse-surface: #191970; /* inverse surface */
+    --surface-container: var(--body);
+    --surface-container-low: var(--surface);
+    --inverse-on-surface: #f0f8ff;
+    --inverse-primary: #fffaf0; /* inverse primary */
+    --inverse-on-primary: #daa20;
+    --code-text-color: #00008b;
+    --code-added-color: #228b22;
+    --code-removed-color: #dc143c;
+    --added-line-color: #90ee9033;
+    --removed-line-color: #ffc0cb33;
+    --font-family: "Comic Sans MS", cursive, sans-serif;
+}
+body.dark {
+    --primary: #c68642; /* catppuccino macchiato */
+    --on-primary: #24273a; /* base */
+    --primary-container: #f3d9b1; /* catppuccino macchiato container */
+    --on-primary-container: #363a4f; /* surface0 */
+    --secondary: #f5bde6; /* pink */
+    --on-secondary: #24273a; /* base */
+    --secondary-container: #f0c6c6; /* flamingo */
+    --on-secondary-container: #494d64; /* surface1 */
+    --tertiary: #eed49f; /* yellow */
+    --on-tertiary: #24273a; /* base */
+    --tertiary-container: #f5a97f; /* peach */
+    --on-tertiary-container: #5b6078; /* surface2 */
+    --selection: #363a4f;
+    --error: #ed8796; /* red */
+    --on-error: #ffffff;
+    --error-container: #f5a97f; /* peach */
+    --on-error-container: #b22222;
+    --background: #181926; /* crust */
+    --body: #181926; /* crust */
+    --on-background: #ffffff;
+    --surface: #181926; /* crust */
+    --on-surface: #ffffff;
+    --surface-variant: #1e2030; /* mantle */
+    --on-surface-variant: #483d8b;
+    --surface-container: var(--body);
+    --surface-container-low: var(--surface);
+    --inverse-surface: #24273a; /* base */
+    --inverse-on-surface: #181926; /* crust */
+    --inverse-primary: #f3d9b1; /* catppuccino macchiato */
+    --inverse-on-primary: #daa520;
+    --code-text-color: #cad3f5; /* text */
+    --code-added-color: #228b22;
+    --code-removed-color: #dc143c;
+    --added-line-color: #90ee9033;
+    --removed-line-color: #ffc0cb33;
+    --font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+a {
+  user-select: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+}
+
+body,
+nav {
+  transition: background 0.6s ease-in-out;
+}
+
+div.cm-scroller::-webkit-scrollbar {
+  width: 8px !important;
+  background: var(--primary) !important;
+}
+
+div.cm-scroller::-webkit-scrollbar-thumb {
+  background: var(--primary) !important;
+}
+
+code {
+  font-family: var(--font-family) !important;
+}
+
+.added {
+  color: var(--code-added-color) !important;
+  background-color: var(--added-line-color) !important;
+  padding: 0.2rem !important;
+}
+
+.removed {
+  color: var(--code-removed-color) !important;
+  background-color: var(--removed-line-color) !important;
+  padding: 0.2rem !important;
+}
+
+.cm-tooltip {
+  background-color: var(--primary-container) !important;
+}
+
+.ͼ2.cm-gutters {
+  background-color: var(--primary) !important;
+}
+
+.ͼ2 .cm-activeLine,
+.ͼ2 .cm-activeLineGutter {
+  background-color: var(--selection);
+}
+
+.ͼ2.cm-activeLineGutter {
+  border-left-width: 3px !important;
+  border-left-style: solid !important;
+  border-left-color: var(--primary) !important;
+}
+
+.dark code.ͼi {
+  color: #81c491 !important;
+}
+
+.dark code.ͼi {
+  color: #98c379 !important;
+}
+
+.dark code.ͼb {
+  color: #c678dd !important;
+}
+
+.cm-number,
+div[data-language="css"].ͼb {
+  color: #d19a66 !important;
+}
+
+.dark code.ͼe {
+  color: #e06c75 !important;
+}
+
+.dark code.ͼg,
+.dark code.ͼj {
+  color: #61afef !important;
+}
+
+.cm-error {
+  color: #e06c75 !important;
+}
+
+.cm-qualifier {
+  color: #abb2bf !important;
+}
+
+.cm-bracket {
+  color: #abb2bf !important;
+}
+
+.dark code.ͼc,
+.dark code.ͼi {
+  color: #6ce09c !important;
+}
+
+.dark code.ͼd {
+  color: #e06c75 !important;
+}
+
+/* Additional styles for CodeMirror editor */
+.cm-editor {
+  background-color: var(--surface) !important;
+  color: var(--code-text-color) !important;
+}
+.cm-cursor {
+  border-left-color: var(--primary) !important;
+}
+
+.cm-panel,
+.cm-selection {
+  background-color: var(--primary-container) !important;
+}
+
+.cm-selectionMatch {
+  background-color: var(--secondary-container) !important;
+}
+
+.cm-gutters {
+  background-color: var(--surface-variant) !important;
+  border-right-color: var(--primary) !important;
+}

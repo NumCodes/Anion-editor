@@ -1,0 +1,146 @@
+:root {
+  --primary: #FFD700;
+  --on-primary: #000000;
+  --primary-container: #FFFAF0;
+  --on-primary-container: #8B4513;
+  --secondary: #FFA500;
+  --on-secondary: #000000;
+  --secondary-container: #FFF5EE;
+  --on-secondary-container: #A0522D;
+  --tertiary: #FF6347;
+  --on-tertiary: #000000;
+  --tertiary-container: #FFE4E1;
+  --on-tertiary-container: #CD5C5C;
+  --error: #DC143C;
+  --on-error: #FFFFFF;
+  --error-container: #FFE4E1;
+  --on-error-container: #B22222;
+  --background: #F0F8FF;
+  --body: #F0F8FF;
+  --on-background: #00008B;
+  --surface: #F0F8FF;
+  --on-surface: #00008B;
+  --surface-variant: #E6E6FA;
+  --on-surface-variant: #483D8B;
+  --inverse-surface: #191970;
+  --inverse-on-surface: #F0F8FF;
+  --inverse-primary: #FFFAF0;
+  --inverse-on-primary: #DAA520;
+  --code-text-color: #00008B;
+  --code-added-color: #228B22;
+  --code-removed-color: #DC143C;
+  --added-line-color: #90EE9033;
+  --removed-line-color: #FFC0CB33;
+  --font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body.dark {
+  /* dark mode style */
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+a {
+  user-select: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+}
+
+body,
+nav {
+  transition: background 0.6s ease-in-out;
+}
+
+div.cm-scroller::-webkit-scrollbar {
+ width :8px !important; 
+ background :var(--active) !important; 
+}
+
+div.cm-scroller::-webkit-scrollbar-thumb {
+ background :var(--primary) !important; 
+}
+
+code {
+ font-family :var(--font-family) !important; 
+}
+
+.added {
+ color :var(--code-added-color) !important; 
+ background-color :var(--added-line-color) !important; 
+ padding :0.2rem !important; 
+}
+
+.removed {
+ color :var(--code-removed-color) !important; 
+ background-color :var(--removed-line-color) !important; 
+ padding :0.2rem !important; 
+}
+
+.cm-tooltip {
+ background-color :var(--primary-container) !important; 
+}
+
+.ͼ2 .cm-gutters {
+ background-color :var(--active) !important; 
+}
+
+.ͼ2 .cm-activeLine,
+.ͼ2 .cm-activeLineGutter {
+ border-left-width :3px !important; 
+ border-left-style :solid !important; 
+ border-left-color :var(--primary) !important; 
+}
+
+.dark code .ͼi {
+ color :#81c491 !important; 
+}
+
+.dark code .ͼi {
+ color :#98c379 !important; 
+}
+
+.dark code .ͼb {
+ color :#c678dd !important; 
+}
+
+.cm-number,
+div[data-language="css"] .ͼb {
+ color :#d19a66 !important; 
+}
+
+.dark code .ͼe {
+ color :#e06c75 !important; 
+}
+
+.dark code .ͼg,
+.dark code .ͼj {
+ color :#61afef !important; 
+}
+
+.cm-error {
+ color :#e06c75 !important; 
+}
+
+.cm-qualifier {
+ color :#abb2bf !important; 
+}
+
+.cm-bracket {
+ color :#abb2bf !important; 
+}
+
+.dark code .ͼc,
+.dark code .ͼi {
+ color :#6ce09c !important; 
+}
+
+.dark code .ͼd {
+ color :#e06c75 !important; 
+}
