@@ -1,111 +1,197 @@
-# An!on Code Editor
+# An!on Editor
+
+A lightweight, browser-based code playground for HTML, CSS, and JavaScript.
 
 ## Overview
 
-This project gives you a full-featured, in-browser editor for HTML, CSS, and JavaScript. It helps you quickly write and test your frontend code by providing everything you need in one place, including a way to track your changes, manage external libraries, keep a to-do list, and even extend its capabilities with plugins. You don't need a complicated local setup; just open it up and start building.
+An!on Editor gives front-end developers and learners a place to write, preview, and manage small web projects without leaving the browser. It keeps code, version history, tasks, and visual themes in one clean workspace so teams and solo builders can stay focused. Everything runs locally in the browser and persists between sessions, so users never have to set up a server or lose their work after closing a tab.
 
-## Description
+## System Architecture
 
-An!on Code Editor is your all-in-one web development playground right in the browser. It's designed for developers who want a seamless environment to craft, preview, and manage their web projects without the hassle of context switching. With integrated version control, package management, a personal to-do list, and a robust plugin system, An!on empowers you to focus on coding and see your changes instantly.
+```mermaid
+flowchart LR
+  User["Web Browser"]
+  App["An!on Editor"]
+  DB[("IndexedDB")]
+  Cache["Cache Storage"]
+  Plugins["Plugin Registry"]
 
-## Installation
+  User --> App
+  App --> DB
+  App --> Cache
+  App --> Plugins
 
-Getting An!on Code Editor up and running locally is super straightforward. Just follow these steps:
-
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/NumCodes/Anion-editor.git
-    cd anion-editor
-    ```
-
-2.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Start the Development Server:**
-    ```bash
-    npm run dev
-    ```
-    This will typically open the application in your browser at `http://localhost:5173/` (or a similar address).
-
-4.  **Build for Production (Optional):**
-    If you want to create a production-ready build, run:
-    ```bash
-    npm run build
-    ```
-    This will generate optimized static files in the `dist` directory.
-
-## Usage
-
-Once you've launched An!on Code Editor, you'll find a clean interface ready for your web projects.
-
-*   **Code Editor:** The main area lets you switch between HTML, CSS, and JavaScript tabs. Just type your code, and the preview panel updates in real-time.
-*   **Live Preview:** See your web page render instantly in the dedicated preview section.
-*   **Console Output:** An integrated console shows messages, warnings, and errors from your JavaScript, helping you debug on the fly.
-*   **Navigation Panel:** Use the left-hand navigation to access different features:
-    *   **Code:** Your primary HTML, CSS, JS editing environment.
-    *   **Changes:** Review and commit your code changes. The editor tracks differences between your current work and previously committed versions. You'll see lines added and removed, making version control easy.
-    *   **Libraries:** Manage external CSS and JavaScript libraries to include in your project.
-    *   **Todo:** Keep track of tasks and notes directly within the editor.
-    *   **Plugins:** Extend the editor's functionality with various plugins, including different themes.
-    *   **Settings:** Customize editor behavior, toggle UI elements, and manage your data (export/delete).
-
-Experiment with the settings to personalize your coding experience, and don't forget to commit your changes regularly!
+  style User fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#fff
+  style App fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#fff
+  style DB fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
+  style Cache fill:#4c0519,stroke:#ef4444,stroke-width:2px,color:#fff
+  style Plugins fill:#022c22,stroke:#10b981,stroke-width:2px,color:#fff
+```
 
 ## Features
 
-An!on Code Editor comes packed with features to enhance your frontend development workflow:
+- **Live code editor** with dedicated tabs for HTML, CSS, and JavaScript.
+- **Real-time preview** rendered inside a sandboxed iframe.
+- **Mirrored browser console** so `console.log`, `error`, `warn`, and `info` appear right in the editor.
+- **Lightweight version control** that snapshots files and shows line-by-line diffs for each commit.
+- **Integrated todo list** with color tags and human-readable timestamps.
+- **Theme and plugin system** that downloads CSS themes and JS plugins on demand.
+- **Library manager** for injecting external CSS and JavaScript dependencies into the preview.
+- **Export options** for downloading a project as a single HTML file or backing up all local data.
+- **Persistent local storage** so work, history, todos, plugins, and settings survive page reloads.
 
-*   **Real-time Code Editor:** Write HTML, CSS, and JavaScript with instant visual feedback in a live preview.
-*   **Integrated Version Control:** Track changes, diff files, and commit your code directly within the editor, providing a lightweight version history.
-*   **Client-side Library Management:** Easily add and manage external CSS and JavaScript libraries to your projects, simplifying dependency inclusion.
-*   **Built-in To-Do Application:** Organize your tasks and keep development notes handy with a simple, integrated to-do list.
-*   **Extensible Plugin System:** Personalize your environment by installing and managing themes and custom scripts.
-*   **Customizable Editor Settings:** Adjust navigation labels, enable a "Theme Editor Mode" for direct CSS modification, manage plugin URLs, and add custom head metadata to your preview.
-*   **Data Export and Import:** Export all your project data (code, changes, plugins, todos) as a JSON file for backup or sharing, with import functionality coming soon.
-*   **Interactive Console Output:** View `console.log`, `error`, `warn`, and `info` messages from your previewed code directly in the editor's terminal.
-*   **Persistent Data Storage:** Your code and settings are saved locally in your browser using IndexedDB, so your work persists across sessions.
+### Live Preview Flow
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant Editor
+  participant Store
+  participant Preview
+
+  User->>Editor: Types HTML, CSS, or JS
+  Editor->>Store: Saves code
+  Store->>Preview: Builds preview page
+  Preview->>Store: Sends console messages
+  Store->>Editor: Shows console output
+```
+
+### Version Control Flow
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant Editor
+  participant DB as Database
+  participant History
+
+  User->>Editor: Writes a commit note
+  Editor->>DB: Fetches last saved files
+  DB->>Editor: Returns previous snapshot
+  Editor->>History: Stores diff and comment
+  History->>DB: Saves new snapshot
+```
+
+### Plugin and Theme Flow
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant Editor
+  participant Registry
+  participant Cache
+  participant DB as Database
+  participant Page
+
+  User->>Editor: Chooses a theme or plugin
+  Editor->>Registry: Fetches plugin file
+  Registry->>Cache: Downloads file
+  Cache->>DB: Stores plugin info
+  DB->>Editor: Marks plugin active
+  Editor->>Page: Applies theme or runs script
+```
 
 ## Technologies Used
 
-This project leverages a modern web stack to deliver a fast and interactive user experience.
+| Technology | Purpose | Link |
+|---|---|---|
+| TypeScript | Type-safe application logic | [typescriptlang.org](https://www.typescriptlang.org/) |
+| Svelte | Reactive UI framework | [svelte.dev](https://svelte.dev/) |
+| Vite | Fast build tooling and dev server | [vitejs.dev](https://vitejs.dev/) |
+| CodeMirror | Language-aware code editing | [codemirror.net](https://codemirror.net/) |
+| Dexie | Friendly wrapper for IndexedDB storage | [dexie.org](https://dexie.org/) |
+| Beer CSS | Material Design component utilities | [beercss.com](https://www.beercss.com/) |
 
-| Technology          | Description                                                    | Link                                            |
-| :------------------ | :------------------------------------------------------------- | :---------------------------------------------- |
-| **Svelte**          | A modern JavaScript framework for building user interfaces.    | [svelte.dev](https://svelte.dev/)               |
-| **TypeScript**      | A typed superset of JavaScript that compiles to plain JavaScript. | [typescriptlang.org](https://www.typescriptlang.org/) |
-| **Vite**            | A fast development build tool for modern web projects.         | [vitejs.dev](https://vitejs.dev/)               |
-| **CodeMirror 6**    | A versatile text editor implemented in JavaScript for the browser. | [codemirror.net](https://codemirror.net/)       |
-| **Dexie.js**        | A wrapper for IndexedDB, simplifying client-side database operations. | [dexie.org](https://dexie.org/)                 |
-| **Diff.js**         | A JavaScript library for computing and displaying differences between texts. | [github.com/kpdecker/jsdiff](https://github.com/kpdecker/jsdiff) |
-| **BeerCSS**         | A lightweight, Material Design-inspired CSS framework.         | [beercss.com](https://www.beercss.com/)         |
-| **SortableJS**      | A JavaScript library for reorderable drag-and-drop lists.      | [sortablejs.github.io/Sortable/](https://sortablejs.github.io/Sortable/) |
+## Installation
+
+- Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+- Move into the project folder:
+
+```bash
+cd code-editor
+```
+
+- Install dependencies:
+
+```bash
+npm install
+```
+
+- Start the development server:
+
+```bash
+npm run dev
+```
+
+- Open the URL shown in your terminal, usually `http://localhost:5173`.
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Usage
+
+When you open An!on Editor, you land in the code view with three tabs: HTML, CSS, and JavaScript. Type into any tab and the preview updates automatically.
+
+```html
+<h1>Hello, An!on</h1>
+<button id="btn">Click me</button>
+```
+
+```css
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+```
+
+```js
+document.getElementById('btn').addEventListener('click', () => {
+  console.log('Button clicked');
+});
+```
+
+The preview pane renders the result, and the console pane shows the message from `console.log`.
+
+Use the bottom navigation to switch between:
+
+- **Code** for editing.
+- **Changes** to commit snapshots and review diffs.
+- **Libraries** to add external CSS or JS files.
+- **Todo** to track tasks.
+- **Plugins** to install themes and extensions.
+- **Settings** to toggle labels, manage metadata, and export or delete data.
+
+To save a finished project, open Settings and choose **Export Data**, or use the export button to download a single self-contained `index.html` file.
 
 ## Contributing
 
-We'd love for you to contribute to An!on Code Editor! Here's how you can help:
+Pull requests and issues are welcome. If you want to add a feature or fix a bug, open an issue first so we can discuss the change. Keep commits focused and include a short description of what changed.
 
-1.  **Fork the repository.**
-2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name`.
-3.  **Make your changes.**
-4.  **Commit your changes** with a clear and concise message: `git commit -m "feat: Add new awesome feature"`.
-5.  **Push to your branch:** `git push origin feature/your-feature-name`.
-6.  **Open a Pull Request** explaining your changes and why they're beneficial.
+## Author
 
-Please ensure your code adheres to the existing style and conventions.
+Built by Ugochukwu Nweze.
 
-## License
-
-This project currently does not have an explicit license.
-
-## Author Info
-
-*   **LinkedIn:** [Ugochukwu Nweze](http://linkedin.com/in/ugochukwu-nweze-08812a2b8/)
-*   **X (Twitter):** [@CodesNum80638](https://x.com/CodesNum80638)
+- LinkedIn: [https://linkedin.com/in/ugochukwu-nweze-08812a2b8](https://linkedin.com/in/ugochukwu-nweze-08812a2b8)
+- X: [https://x.com/CodesNum80638](https://x.com/CodesNum80638)
 
 ## Badges
 
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Svelte](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Svelte](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://svelte.dev/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![CodeMirror](https://img.shields.io/badge/CodeMirror-000000?style=for-the-badge&logo=codemirror&logoColor=white)](https://codemirror.net/)
+[![Dexie](https://img.shields.io/badge/Dexie-4B5563?style=for-the-badge&logo=javascript&logoColor=white)](https://dexie.org/)
